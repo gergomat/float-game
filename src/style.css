@@ -1,0 +1,12 @@
+html, body { margin: 0; height: 100%; overflow: hidden; background: #87b7d8; font-family: system-ui, -apple-system, sans-serif; }
+canvas { display: block; }
+#overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(5, 30, 50, 0.45); color: #fff; z-index: 10; }
+#overlay.hidden { display: none; }
+.panel { background: rgba(8, 40, 64, 0.85); padding: 28px 36px; border-radius: 14px; max-width: 360px; }
+.panel h1 { margin: 0; font-size: 32px; }
+.panel .sub { margin: 4px 0 18px; opacity: 0.75; }
+.panel button { font-size: 18px; padding: 10px 22px; border: 0; border-radius: 8px; background: #f2c14e; color: #222; cursor: pointer; }
+.panel ul { padding-left: 18px; line-height: 1.7; opacity: 0.9; }
+#crosshair { position: fixed; left: 50%; top: 50%; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: rgba(255,255,255,0.85); z-index: 5; pointer-events: none; }
+#hud { position: fixed; left: 12px; bottom: 10px; color: #fff; font-size: 13px; text-shadow: 0 1px 2px #000; z-index: 5; pointer-events: none; }
+#underwater { position: fixed; inset: 0; background: rgba(10, 70, 90, 0.55); opacity: 0; pointer-events: none; z-index: 4; }

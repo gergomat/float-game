@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raft Game</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="underwater"></div>
+    <div id="crosshair"></div>
+    <div id="hud"><span id="state"></span></div>
+    <div id="overlay">
+      <div class="panel">
+        <h1>Raft Game</h1>
+        <p class="sub">Milestone 1: Floating</p>
+        <button id="play">Click to play</button>
+        <ul>
+          <li><b>Mouse</b> look around</li>
+          <li><b>W A S D</b> move, <b>Shift</b> sprint</li>
+          <li><b>Space</b> jump / swim up / climb onto the raft</li>
+          <li><b>Esc</b> pause</li>
+        </ul>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
