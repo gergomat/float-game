@@ -3,6 +3,8 @@ export class Input {
   private readonly pressed = new Set<string>();
   mouseDX = 0;
   mouseDY = 0;
+  /** True while the game is being played (not on the menu). */
+  active = false;
 
   constructor(private readonly target: HTMLElement) {
     addEventListener('keydown', (e) => {
@@ -12,8 +14,10 @@ export class Input {
     });
     addEventListener('keyup', (e) => this.down.delete(e.code));
     addEventListener('blur', () => this.down.clear());
+    // With pointer lock, any mouse movement looks around. Where the browser
+    // refuses pointer lock (e.g. inside an embedded frame), drag to look.
     addEventListener('mousemove', (e) => {
-      if (!this.locked) return;
+      if (!this.locked && !(this.active && e.buttons & 1)) return;
       this.mouseDX += e.movementX;
       this.mouseDY += e.movementY;
     });

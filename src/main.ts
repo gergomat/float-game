@@ -46,9 +46,20 @@ const playButton = document.getElementById('play')!;
 const stateLabel = document.getElementById('state')!;
 const underwater = document.getElementById('underwater')!;
 
-playButton.addEventListener('click', () => renderer.domElement.requestPointerLock());
+const setPlaying = (playing: boolean) => {
+  input.active = playing;
+  overlay.classList.toggle('hidden', playing);
+};
+playButton.addEventListener('click', () => {
+  setPlaying(true);
+  // Pointer lock can be refused (embedded frames); drag-to-look still works then.
+  Promise.resolve(renderer.domElement.requestPointerLock()).catch(() => {});
+});
 document.addEventListener('pointerlockchange', () => {
-  overlay.classList.toggle('hidden', input.locked);
+  if (!input.locked) setPlaying(false); // Esc releases the lock: show the menu
+});
+addEventListener('keydown', (e) => {
+  if (e.code === 'Escape' && !input.locked) setPlaying(false);
 });
 
 addEventListener('resize', () => {
